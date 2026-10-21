@@ -1,55 +1,20 @@
 package com.fast.radio;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.view.*;
 import android.widget.*;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.*;
-import java.util.concurrent.*;
 
 public class StationAdapter extends BaseAdapter {
-    public interface Listener { void select(RadioStation s); void favorite(RadioStation s); }
-    private final Context context; private final List<RadioStation> data; private final Listener listener;
-    private final ExecutorService imagePool=Executors.newFixedThreadPool(3);
-    private final Map<String,Bitmap> cache=new ConcurrentHashMap<>();
-    public StationAdapter(Context c,List<RadioStation> d,Listener l){context=c;data=d;listener=l;}
-    @Override public int getCount(){return data.size();}
-    @Override public Object getItem(int p){return data.get(p);}
-    @Override public long getItemId(int p){return p;}
-    @Override public View getView(int p, View convert, ViewGroup parent){
-        RadioStation s=data.get(p);
-        LinearLayout row=new LinearLayout(context); row.setOrientation(LinearLayout.HORIZONTAL); row.setGravity(Gravity.CENTER_VERTICAL); row.setPadding(8,4,4,4); row.setBackgroundColor(Color.rgb(216,208,195));
-        ImageView icon=new ImageView(context); icon.setScaleType(ImageView.ScaleType.CENTER_INSIDE); 
-        
-        // بخش اصلاح شده در خط زیر:
-        icon.setImageResource(com.fast.radio.R.drawable.ic_fast_radio); 
-        
-        row.addView(icon,new LinearLayout.LayoutParams(52,52));
-        TextView t=new TextView(context); t.setText(s.toString()); t.setTextColor(Color.rgb(16,42,67)); t.setTextSize(14); t.setGravity(Gravity.CENTER_VERTICAL); row.addView(t,new LinearLayout.LayoutParams(0,58,1));
-        Button open=new Button(context); open.setBackgroundResource(com.fast.radio.R.drawable.button_cyan_selector); open.setText("↗"); open.setTextSize(18); open.setContentDescription("Open stream in another player"); row.addView(open,new LinearLayout.LayoutParams(54,54));
-        Button star=new Button(context); star.setBackgroundResource(com.fast.radio.R.drawable.button_orange_selector); star.setSelected(s.favorite); star.setText(s.favorite?"★":"☆"); star.setTextSize(18); star.setTextColor(Color.rgb(80,190,255)); row.addView(star,new LinearLayout.LayoutParams(54,54));
-        String key=s.favicon==null?"":s.favicon.trim();
-        if(!key.isEmpty()){
-            Bitmap b=cache.get(key); if(b!=null) icon.setImageBitmap(b); else { final int pos=p; imagePool.execute(()->{try{HttpURLConnection c=(HttpURLConnection)new URL(key).openConnection();c.setConnectTimeout(5000);c.setReadTimeout(7000);c.setInstanceFollowRedirects(true);c.setRequestProperty("User-Agent","RadioDec/3.9");InputStream in=c.getInputStream();Bitmap bm=BitmapFactory.decodeStream(in);in.close();c.disconnect();if(bm!=null){cache.put(key,bm);((android.app.Activity)context).runOnUiThread(this::notifyDataSetChanged);}}catch(Exception ignored){}}); }
-        }
-        row.setOnClickListener(v->listener.select(s));
-        open.setOnClickListener(v->{ v.setSelected(true);
-            if(s.url==null || s.url.trim().isEmpty()) return;
-            try {
-                Intent i=new Intent(Intent.ACTION_VIEW, Uri.parse(s.url.trim()));
-                i.setType("audio/*");
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(Intent.createChooser(i, "پخش با..."));
-            } catch(Exception ignored) {}
-        });
-        star.setOnClickListener(v->{listener.favorite(s); v.setSelected(s.favorite); notifyDataSetChanged();});
-        return row;
+    private final Context context;
+    private final List<RadioStation> data;
+    public StationAdapter(Context c, List<RadioStation> d) { context = c; data = d; }
+    @Override public int getCount() { return data.size(); }
+    @Override public Object getItem(int p) { return data.get(p); }
+    @Override public long getItemId(int p) { return p; }
+    @Override public View getView(int p, View convert, ViewGroup parent) {
+        TextView t = new TextView(context);
+        t.setText(data.get(p).toString());
+        return t;
     }
 }
