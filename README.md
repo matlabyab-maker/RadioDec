@@ -1,11 +1,11 @@
 # RadioDec
 
-Android internet radio project based on the supplied Radio Fast project, prepared as a separate repository named `RadioDec`.
+Android internet radio project.
 
-## Build
+## Build with GitHub Actions
 
-GitHub Actions runs on every push, pull request, or manual workflow dispatch. The workflow builds `:app:assembleDebug` and uploads the APK as the `RadioDec-debug-apk` artifact.
+The workflow in `.github/workflows/build.yml` installs Android SDK 36 and Build Tools 36.0.0, then runs `:app:assembleDebug` using JDK 17 and Gradle 8.13. The resulting APK is uploaded as the `RadioDec-debug-apk` artifact.
 
-## New repository
+## Repository setup
 
-Create a new GitHub repository named `RadioDec`, extract this ZIP, and upload/commit the contents of this folder to the repository root. Do not include the ZIP's outer folder as an extra nesting level.
+Extract the contents of this folder into the root of the GitHub repository named `RadioDec`. Keep the `.github/workflows/build.yml` file in place. After pushing, open the Actions tab and download the `RadioDec-debug-apk` artifact from a successful run.
