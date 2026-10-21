@@ -1,21 +1,48 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fast.radio">
+
+    <!-- مجوزهای لازم برای کارکرد برنامه -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
-    <application android:theme="@style/AppTheme" android:label="RadioDec" android:icon="@drawable/ic_radiodec" android:roundIcon="@drawable/ic_radiodec" android:usesCleartextTraffic="true" android:allowBackup="true">
-        <activity android:name=".WebStreamActivity" android:exported="false" />
-        <activity android:name=".MainActivity" android:exported="true">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_fast_radio"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_fast_radio"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!-- صفحه اصلی برنامه -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".RadioPlaybackService" android:exported="true" android:foregroundServiceType="mediaPlayback" android:stopWithTask="false">
+
+        <!-- صفحه پخش استریم -->
+        <activity
+            android:name=".WebStreamActivity"
+            android:exported="false" />
+
+        <!-- سرویس پخش موسیقی در پس‌زمینه -->
+        <service
+            android:name=".RadioPlaybackService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback">
             <intent-filter>
-                <action android:name="androidx.media3.session.MediaSessionService" />
+                <action android:name="android.media3.session.MediaSessionService" />
             </intent-filter>
         </service>
+
     </application>
+
 </manifest>
