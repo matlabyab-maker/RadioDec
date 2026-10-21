@@ -1,0 +1,14 @@
+[
+  {"name":"BBC World Service","url":"https://vprbbc.streamguys1.com/vprbbc24.mp3","favicon":"https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/BBC_World_Service_Logo.svg/320px-BBC_World_Service_Logo.svg.png"},
+  {"name":"BBC Live News","url":"https://stream.live.vc.bbcmedia.co.uk/bbc_world_service","favicon":"https://upload.wikimedia.org/wikipedia/en/thumb/2/2f/BBC_World_Service_Logo.svg/320px-BBC_World_Service_Logo.svg.png"},
+  {"name":"رادیو فرهنگ","url":"https://cdnw.telewebion.com/radiofarhang/live/playlist.m3u8","country":"Iran","countryCode":"IR","favicon":""},
+  {"name":"رادیو پیام","url":"https://cdnw.telewebion.com/radiopayam/live/playlist.m3u8","country":"Iran","countryCode":"IR","favicon":""},
+  {"name":"رادیو سلامت","url":"https://cdnw.telewebion.com/radiosalamat/live/playlist.m3u8","country":"Iran","countryCode":"IR","favicon":""},
+  {"name":"رادیو ایران","url":"https://cdnw.telewebion.com/radioiran/live/playlist.m3u8","country":"Iran","countryCode":"IR","favicon":""},
+  {"name":"رادیو جوان","url":"https://cdnw.telewebion.com/radiojavan/live/playlist.m3u8","country":"Iran","countryCode":"IR","favicon":""},
+  {"name":"Iran International","url":"https://stream.radiojar.com/dfnrphnr5f0uv","favicon":""},
+  {"name":"i24NEWS English World","url":"https://bcovlive-a.akamaihd.net/ecf224f43f3b43e69471a7b626481af0/eu-central-1/5377161796001/playlist.m3u8","favicon":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/LOGO_i24NEWS.png/512px-LOGO_i24NEWS.png"},
+  {"name":"i24NEWS Arabic","url":"https://bcovlive-a.akamaihd.net/95116e8d79524d87bf3ac20ba04241e3/eu-central-1/5377161796001/playlist.m3u8","favicon":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/LOGO_i24NEWS.png/512px-LOGO_i24NEWS.png"},
+  {"name":"Al Jazeera English Audio","url":"https://live-hls-audio-web-aje.getaj.net/VOICE-AJE/01.m3u8","favicon":""},
+  {"name":"ABC News Australia","url":"http://abc.streamguys1.com/live/newsradio/icecast.audio","favicon":""}
+]
