@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 
-/** Automatic RadioDec relay profile and URL builder. */
+/** Automatic Fast Radio relay profile and URL builder. */
 public final class ProxyConfig {
     private ProxyConfig() {}
 

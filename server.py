@@ -150,7 +150,7 @@ def health():
     return {
         "ok": True,
         "stream_relay": True,
-        "service": "RadioDec Relay",
+        "service": "Fast Radio Relay",
         "version": 1,
         "profiles": {"opus_mono": True, "aac": True, "shared_stream": True}
     }
@@ -190,11 +190,11 @@ async def proxy_stream(
         media_type=relay.media_type if relay.running else ("audio/ogg" if codec == "opus" else "audio/aac"),
         headers={
             "Cache-Control": "no-store",
-            "X-RadioDec-Kbps": str(kbps),
-            "X-RadioDec-Codec": codec,
-            "X-RadioDec-Channels": str(channels),
-            "X-RadioDec-SampleRate": str(sample_rate),
-            "X-RadioDec-Shared-Relay": "1",
+            "X-Fast-Radio-Kbps": str(kbps),
+            "X-Fast-Radio-Codec": codec,
+            "X-Fast-Radio-Channels": str(channels),
+            "X-Fast-Radio-SampleRate": str(sample_rate),
+            "X-Fast-Radio-Shared-Relay": "1",
         },
     )
 

@@ -35,7 +35,7 @@ public class RadioPlaybackService extends MediaSessionService {
         DefaultRenderersFactory renderers = new DefaultRenderersFactory(this)
                 .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER);
         DefaultHttpDataSource.Factory http = new DefaultHttpDataSource.Factory()
-                .setUserAgent("RadioDec/5.0")
+                .setUserAgent("Fast Radio/5.0")
                 .setAllowCrossProtocolRedirects(true);
         player = new ExoPlayer.Builder(this)
                 .setRenderersFactory(renderers)

@@ -18,13 +18,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Finds a RadioDec relay without requiring an address in MainActivity.
+ * Finds a Fast Radio relay without requiring an address in MainActivity.
  * The app tries the bundled discovery directory, validates /health, and caches
  * the first healthy relay locally. If discovery fails, callers can fall back
  * to direct station playback.
  */
 public final class RelayDiscovery {
-    private static final String PREFS = "radiodec_relay";
+    private static final String PREFS = "fast_radio_relay";
     private static final String KEY_BASE = "relay_base";
     private static final int TIMEOUT_MS = 4500;
     private final Context context;
