@@ -26,7 +26,11 @@ public class StationAdapter extends BaseAdapter {
     @Override public View getView(int p, View convert, ViewGroup parent){
         RadioStation s=data.get(p);
         LinearLayout row=new LinearLayout(context); row.setOrientation(LinearLayout.HORIZONTAL); row.setGravity(Gravity.CENTER_VERTICAL); row.setPadding(8,4,4,4); row.setBackgroundColor(Color.rgb(216,208,195));
-        ImageView icon=new ImageView(context); icon.setScaleType(ImageView.ScaleType.CENTER_INSIDE); icon.setImageResource(com.fast.radio.R.drawable.ic_radiodec);
+        ImageView icon=new ImageView(context); icon.setScaleType(ImageView.ScaleType.CENTER_INSIDE); 
+        
+        // بخش اصلاح شده در خط زیر:
+        icon.setImageResource(com.fast.radio.R.drawable.ic_fast_radio); 
+        
         row.addView(icon,new LinearLayout.LayoutParams(52,52));
         TextView t=new TextView(context); t.setText(s.toString()); t.setTextColor(Color.rgb(16,42,67)); t.setTextSize(14); t.setGravity(Gravity.CENTER_VERTICAL); row.addView(t,new LinearLayout.LayoutParams(0,58,1));
         Button open=new Button(context); open.setBackgroundResource(com.fast.radio.R.drawable.button_cyan_selector); open.setText("↗"); open.setTextSize(18); open.setContentDescription("Open stream in another player"); row.addView(open,new LinearLayout.LayoutParams(54,54));
